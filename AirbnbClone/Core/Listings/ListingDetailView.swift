@@ -102,6 +102,44 @@ struct ListingDetailView: View {
                 }
             }
             .padding()
+            
+            Divider()
+            
+            // bedrooms view
+            VStack(alignment: .leading, spacing: 16){
+                Text("Where you'll sleep")
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 16) {
+                        ForEach(1..<5) {
+                            bedroom in HStack{
+                                VStack (alignment: .leading){
+                                    Image(systemName: "bed.double")
+                                    
+                                    Text("Bedroom \(bedroom)")
+                                        .fontWeight(.semibold)
+                                }.padding()
+                                Spacer()
+                            }
+                            .frame(width: 148, height: 100)
+                            .overlay{
+                                RoundedRectangle(cornerRadius: 12)
+                                    .stroke(lineWidth: /*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                    }
+                }
+                .scrollTargetBehavior(.paging)
+            }
+            .padding()
+            
+            Divider()
+            
+            //
+            VStack(spacing: 16) {
+                
+            }
         }
     }
 }
