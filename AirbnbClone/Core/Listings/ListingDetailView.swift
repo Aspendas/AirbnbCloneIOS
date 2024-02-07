@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ListingDetailView: View {
     
@@ -159,9 +160,16 @@ struct ListingDetailView: View {
             Divider()
             
             //Map View
-            VStack{
+            VStack(alignment: .leading, spacing: 16){
+                Text("Where you'll be")
+                    .font(.headline)
                 
+                Map()
+                    .frame(height: 200)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
             }
+            .padding()
+            
         }
     }
 }
