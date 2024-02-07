@@ -17,11 +17,28 @@ struct ListingDetailView: View {
         "listing-4",
     ]
     
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         ScrollView {
             // imagess
-            ListingImageCarouselView()
-                .frame(height: 320)
+            ZStack (alignment: .topLeading){
+                ListingImageCarouselView()
+                    .frame(height: 320)
+                
+                Button{
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .foregroundStyle(.black)
+                        .background{
+                            Circle()
+                                .fill(.white)
+                                .frame(width: 32, height: 32)
+                        }
+                        .padding(36)
+                }
+            }
                 
             VStack(alignment: .leading, spacing: 8) {
                 Text("Cozy Villa")
@@ -169,7 +186,47 @@ struct ListingDetailView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             }
             .padding()
-            
+        }
+        .ignoresSafeArea()
+        .padding(.bottom,72)
+        .overlay(alignment: .bottom) {
+            VStack{
+                Divider()
+                    .padding(.bottom)
+                
+                HStack{
+                    VStack{
+                        Text("$500")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                        
+                        Text("Total before taxes")
+                            .font(.footnote)
+                        
+                        Text("Oct 15 - 20")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                            .underline()
+                    }
+                    
+                    Spacer()
+                    
+                    Button{
+                        
+                    } label: {
+                        Text("Reserve")
+                            .foregroundStyle(.white)
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .frame(width: 140, height: 40)
+                            .background(.pink)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                    }
+                    
+                }
+                .padding(.horizontal, 32)
+            }
+            .background(.white)
         }
     }
 }
