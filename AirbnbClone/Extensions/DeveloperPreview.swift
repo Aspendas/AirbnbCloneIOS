@@ -8,7 +8,8 @@
 import Foundation
 
 class DeveloperPreview {
-    var listing: [Listing] = [
+    static let shared = DeveloperPreview()
+    var listings: [Listing] = [
         .init(
             id: NSUUID() .uuidString,
             ownerUid: NSUUID().uuidString,
